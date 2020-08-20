@@ -156,17 +156,18 @@ def timed_job():
             os.remove("img.png")
         else:
             pass
-    if twentyfourat < dt and dt <= twentyfourhalf:
-        text = words.get_tweets()
-        CK=os.environ["CONSUMER_KEY"]
-        CS=os.environ["CONSUMER_SECRET"]
-        AT=os.environ["ACCESS_TOKEN_KEY"]
-        AS=os.environ["ACCESS_TOKEN_SECRET"]
-        auth = tweepy.OAuthHandler(CK, CS)
-        auth.set_access_token(AT, AS)
-        api = tweepy.API(auth)
-        api.update_with_media(status = text, filename = 'img.png')
-        os.remove("img.png")
+    if day >= 3 and day <= 7:
+        if twentyfourat < dt and dt <= twentyfourhalf:
+            text = words.get_tweets()
+            CK=os.environ["CONSUMER_KEY"]
+            CS=os.environ["CONSUMER_SECRET"]
+            AT=os.environ["ACCESS_TOKEN_KEY"]
+            AS=os.environ["ACCESS_TOKEN_SECRET"]
+            auth = tweepy.OAuthHandler(CK, CS)
+            auth.set_access_token(AT, AS)
+            api = tweepy.API(auth)
+            api.update_with_media(status = text, filename = 'img.png')
+            os.remove("img.png")
 
 if __name__ == "__main__":
     twische.start()
