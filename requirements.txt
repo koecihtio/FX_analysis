@@ -1,0 +1,13 @@
+matplotlib
+pandas_datareader
+numpy
+pandas
+datetime
+statsmodels
+seaborn
+sklearn
+config
+twitter
+tweepy
+pytz
+APScheduler==3.3.1
