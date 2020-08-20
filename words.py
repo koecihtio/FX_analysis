@@ -17,6 +17,9 @@ import config
 from twitter import Twitter, OAuth
 import tweepy
 import pytz
+import gspread
+import json
+from oauth2client.service_account import ServiceAccountCredentials 
 
 def content_corrlation():
     today=datetime.today()
@@ -2622,13 +2625,13 @@ def get_tweets():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
-    columns_name=["TW_ID","TW_TIME","TW_TEXT","FAV","RT"]
+    columns_name=["TW_ID","TW_TIME","TW_TEXT","FAV","RT","FOLLOWER"]
     username="YuKiYa_FX"
     tweet_data = []
     tmpTweets = api.user_timeline(username)
     for tweet in tmpTweets:
         if tweet.created_at < end_date and tweet.created_at > start_date:
-            tweet_data.append([tweet.id,tweet.created_at,tweet.text.replace('\n',''),tweet.favorite_count,tweet.retweet_count])
+            tweet_data.append([tweet.id,tweet.created_at,tweet.text.replace('\n',''),tweet.favorite_count,tweet.retweet_count,followers_count])
     data = pd.DataFrame(tweet_data,columns=columns_name)
     fig = plt.figure(figsize=(20,5))
     plt.plot(data["TW_TIME"],data["FAV"],color='lime',linestyle='solid',linewidth = 2.0, label='Favorite' ,marker='o')
@@ -2648,4 +2651,34 @@ def get_tweets():
                             round(data["FAV"].mean(),1),data["FAV"].max(),data["FAV"].min(),data["FAV"].sum(),
                             round(data["RT"].mean(),1),data["RT"].max(),data["RT"].min(),data["RT"].sum(),
                             len(data))
+    
+    #2つのAPIを記述しないとリフレッシュトークンを3600秒毎に発行し続けなければならない
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+    #認証情報設定
+    #ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('thinking-window-263207-9906732aa6f5.json', scope)
+
+    #OAuth2の資格情報を使用してGoogle APIにログインします。
+    gc = gspread.authorize(credentials)
+
+    #共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
+    SPREADSHEET_KEY = 'https://docs.google.com/spreadsheets/d/1cd1aGOmZ08FEyvbCTxVmA3g7JgfJgLdd5UmgqZiqTlI/edit#gid=0'
+
+    #共有設定したスプレッドシートのシート1を開く
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).raw_data
+
+    values = worksheet.get_all_values()
+    last_row = len(values) + 1
+    worksheet.update_cell(last_row,1,date.today() - timedelta(days=1))
+    worksheet.update_cell(last_row,2,data["FAV"].sum())
+    worksheet.update_cell(last_row,3,data["RT"].sum())
+    worksheet.update_cell(last_row,4,round(data["FAV"].mean(),2))
+    worksheet.update_cell(last_row,5,round(data["RT"].mean(),2))
+    worksheet.update_cell(last_row,6,data["FAV"].max())
+    worksheet.update_cell(last_row,7,data["RT"].max())
+    worksheet.update_cell(last_row,8,data["FAV"].min())
+    worksheet.update_cell(last_row,9,data["RT"].min())
+    worksheet.update_cell(last_row,10,round(data["FOLLOWER"].mean(),2))
+
     return text

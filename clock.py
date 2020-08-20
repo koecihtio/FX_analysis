@@ -22,6 +22,9 @@ def timed_job():
     from twitter import Twitter, OAuth
     import tweepy
     import pytz
+    from oauth2client.service_account import ServiceAccountCredentials 
+    import gspread
+    import json
     today = date.today()
     day = datetime.now().weekday()
     dt = datetime.now(pytz.timezone('Asia/Tokyo')).timetz()

@@ -11,3 +11,6 @@ twitter
 tweepy
 pytz
 APScheduler==3.3.1
+gspread
+oauth2client
+json

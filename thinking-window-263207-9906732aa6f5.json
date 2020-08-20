@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "thinking-window-263207",
+  "private_key_id": "9906732aa6f5b21e17e4c09c265cf032c4aaae0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCqCP9tBWfYaGNC\ncxO2N5mGyI1nSB27f6pYG3HHCeGYQzEO25cqbAx5YcOZ626wAVnRBM+NcM6AyRPf\n21ykz5h7840z8jybrMRK9fldNqvfj+Kbo55j0jdfB/6LfJIQu+W1NDg5CroEFdkG\nduSZGi3HQy7L0LtcPLXUGXNip0ZDrn902SF6z03CtPIHReKL33srukM5BvBRl26N\ny8QlYPdlOo5WvDVCkrp+AKWNnncNX2A4kSlFKFkCXX6HyQmNNZnZWR7HTnvlF+hY\nTRDu7siE0IuhruzBNG7XIrQQdtnNqoW1Mye0O0qN2mjsRfls0OiDKsVz0fFvZpjo\nIPpd61lpAgMBAAECgf9em/pVJkE2K4IPVziX3HUHnk+yjeUr1I6w5iAC4pbPfB8k\nOZxl0rMpyzkfNGlCRX4ltPkBpeLj+hVvE6JwHWPsZY8jGyjGx4B8tSxCUWCFKjAe\nBrUSIWioBnCHYMAfcm094x78tYPz6rQlm/BtkWZV9lR/GW4Pfqyh69jQvSVHK1Q4\ni2BKBdYtwUF8+9oD0iYC4+9L8bG5SSjosB++IEOk7CR7MB6iCp+HoIR/NG6qkVh1\nw1zBqMwy4O+mRn3p3E9eNvhPeyzpk8hcnS1YlsPTe23TFeS8xcxfz8V9Ke9QtaOR\n/XJS9tfCGg+n+Rjah8ZcFA0F4w8roqXw5UEq57ECgYEA1uHlnpWzUiMKOviYwFTt\nUF3KJ5mRkI41FJINEiySeg8cEGCwGA628smItudFUwLNdRmr4VKfxSjlSTZRSlnA\n/DbcjAygx9mx97HgqJ5bhBjsQRqiTyAxuFeG8DMgZYYNx7BKHpfY/Ezd++okP4v0\nIfkLlavTEDdpVwa7rWVq/FECgYEAypI9P0SK//qrdz+WUsMQLlU1yRCDIo+Gliqq\nB4ZwU/bWhGyuig0c20jr7i6Y/LwA2rZMgsqG7ZjnC6qUmGfHS0Rf559Wqojz6oKf\nzZTmzSQ7u4G70bgTX/0ndfZ+EY124QLcYk386a4ffVpL/tn0gCfoKjpaRFmaSZsk\n8bCXfZkCgYEAgTDrhr7mQxnCCtZvsCLfUxQweEKCG/EDxMxSg3y8zBnNe6NF/BDM\nuYelZKIDMfdbY239wsiUOktuHuhDU3pG5txtGN52w/EEaLFPKtGan/8D+9hxgTUP\n747gGAYFEkTYgBhjV6Vf1cC5Lb4F8RbJvqsm5eOaUAOgl6v6pjN1cSECgYBGlOvY\nRpa0GHB0LWjAT40sx63k7+bxPNclLZpu4s3yw5f9Li0mlukOEvt50yylKxCVJF3G\nWLDoypT+gKIj9E0BkcJk3yUAaJWsiXUK2a4NnmldrRd3PE8r6/Y66PcGQKdCQY/u\nhMPx3CTGtZazJthFayI+zHQ1So8yxGb7+47dSQKBgQCdGbkI2Z90UuTZ4gHQe2GB\nH0EI+FEGnLZzP1IGlRGZJziOBwqHIQ8sdJzKnks6OaY+RvVpQzCff9Pvh/OrNPlA\nnlCou9Ck5F7LdJmwv17dc10ZsJEBKrGhP5o5RruoTjmh2a8geHh6xsJIGHDQXILN\ng1CpXyEtqyd1h64DERU8LQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "wirite-from-python@thinking-window-263207.iam.gserviceaccount.com",
+  "client_id": "112500586530648343052",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wirite-from-python%40thinking-window-263207.iam.gserviceaccount.com"
+}
