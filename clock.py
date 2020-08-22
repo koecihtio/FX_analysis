@@ -70,90 +70,112 @@ def timed_job():
             text = words.content_corrlation()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif sevenat< dt and dt <= sevenhalf:
             text,caption = words.gold_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif sevenhalf < dt and dt <= eightat:
             text,caption = words.usdjpy_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif eightat < dt and dt <= eighthalf:
             text,caption = words.nikkei_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif eighthalf < dt and dt <= nineat:
             text,caption = words.audusd_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif nineat < dt and dt <= ninehalf:
             text,caption = words.usdcad_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif elevenhalf < dt and dt <= twelveat:
             text,caption = words.btc_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif twelvehalf < dt and dt <= thirteenat:
             text,caption = words.dow_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif fifteenat < dt and dt <= fifteenhalf:
             text,caption = words.vix_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif fifteenhalf < dt and dt <= sixteenat:
             text,caption = words.usdchf_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif sixteenat < dt and dt <= sixteenhalf:
             text,caption = words.eurusd_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif sixteenhalf < dt and dt <= seventeenat:
             text,caption = words.gbpusd_predict(k=10)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif seventeenat < dt and dt <= seventeenhalf:
             text,caption = words.eurusd_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif seventeenhalf < dt and dt <= eighteenat:
             text,caption = words.gbpusd_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif eighteenat < dt and dt <= eighteenhalf:
             text,caption = words.usdchf_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif eighteenhalf < dt and dt <= nineteenat:
             text,caption = words.wti_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif nineteenat < dt and dt <= nineteenhalf:
             text,caption = words.cadusd_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif nineteenhalf < dt and dt <= twentyat:
             text,caption = words.audusd_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif twentyat < dt and dt <= twentyhalf:
             text,caption = words.nikkei_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif twentyhalf < dt and dt <= twentyoneat:
             text,caption = words.usdjpy_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif twentyoneat < dt and dt <= twentyonehalf:
             text,caption = words.dow_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         elif twentyonehalf < dt and dt <= twentytwoat:
             text,caption = words.gold_volatility()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
+            plt.close()
         else:
             pass
     if day >= 3 and day <= 7:
@@ -168,6 +190,6 @@ def timed_job():
             api = tweepy.API(auth)
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
-
+            plt.close()
 if __name__ == "__main__":
     twische.start()
