@@ -178,7 +178,7 @@ def timed_job():
             plt.close()
         else:
             pass
-    if day >= 3 and day <= 7:
+    if day >= 2 and day <= 6:
         if twentythreeat < dt and dt <= twentythreehalf:
             text = words.get_tweets()
             CK=os.environ["CONSUMER_KEY"]
