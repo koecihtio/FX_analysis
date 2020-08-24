@@ -54,8 +54,8 @@ def timed_job():
     twentyoneat = datetime(2018,2,1,21,0,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
     twentyonehalf = datetime(2018,2,1,21,30,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
     twentytwoat =  datetime(2018,2,1,22,00,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
-    twentyfourat =  datetime(2018,2,1,00,00,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
-    twentyfourhalf = datetime(2018,2,1,00,30,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
+    twentythreeat =  datetime(2018,2,1,23,00,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
+    twentythreehalf = datetime(2018,2,1,23,30,tzinfo=pytz.timezone('Asia/Tokyo')).timetz()
 
 
     if day >= 0 and day <= 4:
@@ -179,7 +179,7 @@ def timed_job():
         else:
             pass
     if day >= 3 and day <= 7:
-        if twentyfourat < dt and dt <= twentyfourhalf:
+        if twentythreeat < dt and dt <= twentythreehalf:
             text = words.get_tweets()
             CK=os.environ["CONSUMER_KEY"]
             CS=os.environ["CONSUMER_SECRET"]

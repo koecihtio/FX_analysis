@@ -2619,20 +2619,20 @@ def btc_predict(k=10):
     
     return text,caption
 
-def get_tweets():
+ddef get_tweets():
     start_date = datetime.now() - timedelta(days=2)
     end_date = datetime.now() - timedelta(days=1)
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
-    columns_name=["TW_ID","TW_TIME","TW_TEXT","FAV","RT","FOLLOWER"]
+    columns_name=["TW_ID","TW_TIME","FAV","RT","FOLLOWER"]
     username="YuKiYa_FX"
     tweet_data = []
     tmpTweets = api.user_timeline(username)
     user = api.me()
     for tweet in tmpTweets:
         if tweet.created_at < end_date and tweet.created_at > start_date:
-            tweet_data.append([tweet.id,tweet.created_at,tweet.text.replace('\n',''),tweet.favorite_count,tweet.retweet_count,user.followers_count])
+            tweet_data.append([tweet.id,tweet.created_at,tweet.favorite_count,tweet.retweet_count,user.followers_count])
     data = pd.DataFrame(tweet_data,columns=columns_name)
     fig = plt.figure(figsize=(20,5))
     plt.plot(data["TW_TIME"],data["FAV"],color='lime',linestyle='solid',linewidth = 2.0, label='Favorite' ,marker='o')
@@ -2668,18 +2668,18 @@ def get_tweets():
 
     #共有設定したスプレッドシートのシート1を開く
     worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
-    
+
     values = worksheet.get_all_values()
     last_row = int(len(values)) + 1
     worksheet.update_cell(last_row,1,(date.today() - timedelta(days=2)).isoformat())
-    worksheet.update_cell(last_row,2,int(data["FAV"].sum()))
-    worksheet.update_cell(last_row,3,int(data["RT"].sum()))
-    worksheet.update_cell(last_row,4,float(round(data["FAV"].mean(),2)))
-    worksheet.update_cell(last_row,5,float(round(data["RT"].mean(),2)))
-    worksheet.update_cell(last_row,6,int(data["FAV"].max()))
-    worksheet.update_cell(last_row,7,int(data["RT"].max()))
-    worksheet.update_cell(last_row,8,int(data["FAV"].min()))
-    worksheet.update_cell(last_row,9,int(data["RT"].min()))
-    worksheet.update_cell(last_row,10,float(round(data["FOLLOWER"].mean(),2)))
+    worksheet.update_cell(last_row,2,json.dumps(data["FAV"].sum()))
+    worksheet.update_cell(last_row,3,json.dumps(data["RT"].sum()))
+    worksheet.update_cell(last_row,4,json.dumps(round(data["FAV"].mean(),2)))
+    worksheet.update_cell(last_row,5,json.dumps(round(data["RT"].mean(),2)))
+    worksheet.update_cell(last_row,6,json.dumps(data["FAV"].max()))
+    worksheet.update_cell(last_row,7,json.dumps(data["RT"].max()))
+    worksheet.update_cell(last_row,8,json.dumps(data["FAV"].min()))
+    worksheet.update_cell(last_row,9,json.dumps(data["RT"].min()))
+    worksheet.update_cell(last_row,10,json.dumps(round(data["FOLLOWER"].mean(),2)))
     
     return text
