@@ -101,7 +101,7 @@ def usdjpy_volatility():
     fig.savefig("img.png")
     
     text = """昨日のドル円ボラティリティ
-    ドル円の昨日の終値ボラティリティは{}%です。。""".format(round(usdjpy.iloc[-1]["USDJPY"],3))
+    ドル円の昨日の終値ボラティリティは{}%です。""".format(round(usdjpy.iloc[-1]["USDJPY"],3))
                                        
                                        
     caption = """ボラティリティとは値動きの度合いを表したものです。
@@ -112,7 +112,7 @@ def usdjpy_volatility():
     
     ボラティリティが小さいとその逆です。"""
     
-    return text,caption
+    return text
     
     
 def eurusd_volatility():
@@ -2619,7 +2619,7 @@ def btc_predict(k=10):
     
     return text,caption
 
-ddef get_tweets():
+def get_tweets():
     start_date = datetime.now() - timedelta(days=2)
     end_date = datetime.now() - timedelta(days=1)
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
