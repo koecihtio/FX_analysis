@@ -182,7 +182,6 @@ def timed_job():
         pass
     if day >= 1 and day <= 5:
         if twentythreeat < dt and dt <= twentythreehalf:
-            text = words.get_tweets()
             CK=os.environ["CONSUMER_KEY"]
             CS=os.environ["CONSUMER_SECRET"]
             AT=os.environ["ACCESS_TOKEN_KEY"]
@@ -190,6 +189,7 @@ def timed_job():
             auth = tweepy.OAuthHandler(CK, CS)
             auth.set_access_token(AT, AS)
             api = tweepy.API(auth)
+            text = words.get_tweets()
             api.update_with_media(status = text, filename = 'img.png')
             os.remove("img.png")
             plt.close()

@@ -2639,7 +2639,7 @@ def get_tweets():
     plt.plot(data["TW_TIME"],data["RT"],color='cyan',linestyle='dashed',linewidth = 1.0, label='RT' ,marker='x')
     plt.xlabel("datetime")
     plt.ylabel("Count")
-    plt.title("Movement of Fav and RT of tweets {}".format(start_date.date()))
+    plt.title("Movement of Fav and RT of tweets {}".format(end_date.date()))
     plt.legend()
     plt.show()
     fig.savefig("img.png")
@@ -2648,7 +2648,7 @@ def get_tweets():
     
     また、「RT」の平均値は{}、最大値は{}、最小値は{}で、合計{}の「RT」を獲得しました。
     
-    ツイート数は{}件でした。""".format(start_date.date().strftime("%Y年%m月%d日"),
+    ツイート数は{}件でした。""".format(end_date.date().strftime("%Y年%m月%d日"),
                             round(data["FAV"].mean(),1),data["FAV"].max(),data["FAV"].min(),data["FAV"].sum(),
                             round(data["RT"].mean(),1),data["RT"].max(),data["RT"].min(),data["RT"].sum(),
                             len(data))
@@ -2671,15 +2671,15 @@ def get_tweets():
 
     values = worksheet.get_all_values()
     last_row = int(len(values)) + 1
-    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=2)).isoformat())
-    worksheet.update_cell(last_row,2,json.dumps(data["FAV"].sum()))
-    worksheet.update_cell(last_row,3,json.dumps(data["RT"].sum()))
-    worksheet.update_cell(last_row,4,json.dumps(round(data["FAV"].mean(),2)))
-    worksheet.update_cell(last_row,5,json.dumps(round(data["RT"].mean(),2)))
-    worksheet.update_cell(last_row,6,json.dumps(data["FAV"].max()))
-    worksheet.update_cell(last_row,7,json.dumps(data["RT"].max()))
-    worksheet.update_cell(last_row,8,json.dumps(data["FAV"].min()))
-    worksheet.update_cell(last_row,9,json.dumps(data["RT"].min()))
-    worksheet.update_cell(last_row,10,json.dumps(round(data["FOLLOWER"].mean(),2)))
+    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=1)).isoformat())
+    worksheet.update_cell(last_row,2,json.dumps(int(data["FAV"].sum())))
+    worksheet.update_cell(last_row,3,json.dumps(int(data["RT"].sum())))
+    worksheet.update_cell(last_row,4,json.dumps(float(round(data["FAV"].mean(),2))))
+    worksheet.update_cell(last_row,5,json.dumps(float(round(data["RT"].mean(),2))))
+    worksheet.update_cell(last_row,6,json.dumps(int(data["FAV"].max())))
+    worksheet.update_cell(last_row,7,json.dumps(int(data["RT"].max())))
+    worksheet.update_cell(last_row,8,json.dumps(int(data["FAV"].min())))
+    worksheet.update_cell(last_row,9,json.dumps(int(data["RT"].min())))
+    worksheet.update_cell(last_row,10,json.dumps(float(round(data["FOLLOWER"].mean(),2))))
     
     return text
