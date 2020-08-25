@@ -178,7 +178,7 @@ def timed_job():
             plt.close()
         else:
             pass
-     else:
+    else:
         pass
     if day >= 1 and day <= 5:
         if twentythreeat < dt and dt <= twentythreehalf:
