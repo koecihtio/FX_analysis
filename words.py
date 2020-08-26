@@ -2620,8 +2620,8 @@ def btc_predict(k=10):
     return text,caption
 
 def get_tweets():
-    start_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=2)
-    end_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=1)
+    start_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=1)
+    end_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=0)
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
