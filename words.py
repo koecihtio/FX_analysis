@@ -2620,15 +2620,15 @@ def btc_predict(k=10):
     return text,caption
 
 def get_tweets():
-    start_date = datetime.now() - timedelta(days=2)
-    end_date = datetime.now() - timedelta(days=1)
+    start_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=2)
+    end_date = datetime.now().replace(hour=0,minute=0,second=0,microsecond=0) - timedelta(days=1)
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
     columns_name=["TW_ID","TW_TIME","FAV","RT","FOLLOWER"]
     username="YuKiYa_FX"
     tweet_data = []
-    tmpTweets = api.user_timeline(username)
+    tmpTweets = api.user_timeline(screen_name=username,count=100)
     user = api.me()
     for tweet in tmpTweets:
         if tweet.created_at < end_date and tweet.created_at > start_date:
@@ -2639,7 +2639,7 @@ def get_tweets():
     plt.plot(data["TW_TIME"],data["RT"],color='cyan',linestyle='dashed',linewidth = 1.0, label='RT' ,marker='x')
     plt.xlabel("datetime")
     plt.ylabel("Count")
-    plt.title("Movement of Fav and RT of tweets {}".format(end_date.date()))
+    plt.title("Movement of Fav and RT of tweets {}".format(start_date.date()))
     plt.legend()
     plt.show()
     fig.savefig("img.png")
@@ -2648,7 +2648,7 @@ def get_tweets():
     
     また、「RT」の平均値は{}、最大値は{}、最小値は{}で、合計{}の「RT」を獲得しました。
     
-    ツイート数は{}件でした。""".format(end_date.date().strftime("%Y年%m月%d日"),
+    ツイート数は{}件でした。""".format(start_date.date().strftime("%Y年%m月%d日"),
                             round(data["FAV"].mean(),1),data["FAV"].max(),data["FAV"].min(),data["FAV"].sum(),
                             round(data["RT"].mean(),1),data["RT"].max(),data["RT"].min(),data["RT"].sum(),
                             len(data))
@@ -2671,7 +2671,7 @@ def get_tweets():
 
     values = worksheet.get_all_values()
     last_row = int(len(values)) + 1
-    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=1)).isoformat())
+    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=2)).isoformat())
     worksheet.update_cell(last_row,2,json.dumps(int(data["FAV"].sum())))
     worksheet.update_cell(last_row,3,json.dumps(int(data["RT"].sum())))
     worksheet.update_cell(last_row,4,json.dumps(float(round(data["FAV"].mean(),2))))
