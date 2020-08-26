@@ -2622,7 +2622,7 @@ def btc_predict(k=10):
 def get_tweets():
     start_date = datetime.now() - timedelta(days=2)
     end_date = datetime.now() - timedelta(days=1)
-    auth = twesepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
     columns_name=["TW_ID","TW_TIME","FAV","RT","FOLLOWER"]
