@@ -2675,7 +2675,7 @@ def get_tweets():
 
     values = worksheet.get_all_values()
     last_row = int(len(values)) + 1
-    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=2)).isoformat())
+    worksheet.update_cell(last_row,1,(date.today() - timedelta(days=1)).isoformat())
     worksheet.update_cell(last_row,2,json.dumps(int(data["FAV"].sum())))
     worksheet.update_cell(last_row,3,json.dumps(int(data["RT"].sum())))
     worksheet.update_cell(last_row,4,json.dumps(float(round(data["FAV"].mean(),2))))
