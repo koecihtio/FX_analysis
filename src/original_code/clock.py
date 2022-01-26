@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import words
+import src.original_code.words as words
 
 twische = BlockingScheduler()
 @twische.scheduled_job('interval',minutes=30)
